@@ -18,7 +18,7 @@ app.use(fileUpload({
     useTempFiles: true,
 }))
 
-connectToDB()
+// connectToDB()
 // combineMiddleWares(app)
 combineRouters(app)
 
