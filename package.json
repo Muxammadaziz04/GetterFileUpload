@@ -1,14 +1,13 @@
 {
-  "name": "fileupload",
-  "version": "1.0.0",
-  "description": "",
+  "name": "getter-fileupload",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Muhammadaziz",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -32,5 +31,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Muxammadaziz04/GetterFileUpload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Muxammadaziz04/GetterFileUpload/issues"
+  },
+  "homepage": "https://github.com/Muxammadaziz04/GetterFileUpload#readme",
+  "description": ""
 }
