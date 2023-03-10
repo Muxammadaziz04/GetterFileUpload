@@ -4,9 +4,9 @@ const fs = require('fs')
 class RemoveController{
     async removeFile(req, res, next) {
         try {
-            const pathName = req.body?.url?.replace(/^[a-z]{4,5}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '$1')
+            const pathName = new URL(req.body.url)?.pathname || ''
             if (pathName) {
-                fs.unlink(path.join(__dirname, '../../uploads', pathName), (err) => {
+                fs.unlink(path.join(__dirname, '../../../uploads', pathName), (err) => {
                     if(err) {
                         console.log("Remove file error :", err);
                     }
