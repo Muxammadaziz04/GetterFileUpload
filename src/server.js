@@ -9,7 +9,7 @@ const { PORT } = require('./configs/server.config.js')
 
 const app = express()
 
-app.use(cors())
+app.use(cors({origin: true}))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.resolve(__dirname, '../../uploads')))

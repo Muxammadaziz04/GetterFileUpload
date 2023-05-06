@@ -9,6 +9,7 @@ class ImageController {
     async uploadImage(req, res, next) {
         try {
             const { folderName } = req.body
+            const resize = req.query?.resize !== 'false' ? true : false
             const image = req.files?.image;
             var tempFilePath = image?.tempFilePath;
             const fileName = setFileExtension(uuidv4() + req.files?.image?.name.replace(/\s/g, ''), '.png')
@@ -34,7 +35,8 @@ class ImageController {
                         inputPath: tempFilePath,
                         tempPath: path.resolve(__dirname, '../../temp/image', fileName).replace(/\\/g, '/'),
                         outputPath,
-                        url
+                        url,
+                        resize
                     })
                     child.on('message', ({ statusCode, msg }) => {
                         res.status(statusCode).send(msg)

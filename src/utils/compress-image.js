@@ -2,11 +2,11 @@ const fs = require("fs");
 const Sharp = require('sharp')
 const compressImages = require('compress-images')
 
-let RESIZE_WIDTH = 700;
-const compression = 70;
+let RESIZE_WIDTH = 1000;
+const compression = 97;
 
 process.on("message", (payload) => {
-    const { inputPath, outputPath, tempPath, url } = payload;
+    const { inputPath, outputPath, tempPath, url, resize } = payload;
 
     const endProcess = (endPayload) => {
         const { statusCode, msg } = endPayload;
@@ -23,8 +23,7 @@ process.on("message", (payload) => {
         .metadata()
         .then(metadata => {
             const { width } = metadata
-            console.log(width);
-            RESIZE_WIDTH = Math.min(RESIZE_WIDTH, width)
+            RESIZE_WIDTH = resize ? Math.min(RESIZE_WIDTH, width) : width
         }).then(() => {
             Sharp(inputPath)
                 .resize({ width: RESIZE_WIDTH })
@@ -39,8 +38,6 @@ process.on("message", (payload) => {
                             { svg: { engine: "svgo", command: "--multipass" } },
                             { gif: { engine: "gifsicle", command: ["--colors", "64", "--use-col=web"] } },
                             async function (error, completed, statistic) {
-                                console.log(error);
-                                console.log(statistic);
                                 if (error) {
                                     throw { statusCode: 500, msg: err?.message || 'Somethink went wrong', url: null }
                                 }
