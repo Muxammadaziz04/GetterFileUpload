@@ -15,7 +15,7 @@ class ImageController {
             const fileName = setFileExtension(uuidv4() + req.files?.image?.name.replace(/\s/g, ''), '.png')
             const outputDir = path.resolve(__dirname, '../../../uploads/image/', folderName || '')
             const outputPath = path.join(__dirname, '../../../uploads/image/', folderName || '', './')
-            const url = (req.protocol + "://" + req.get("host") + path.join('/image', folderName || '', fileName))
+            const url = (req.protocol + "://" + req.get("host") + path.join('/image', folderName || '', fileName)).replace(/\\/g, '/')
 
             if (!fs.existsSync(outputDir)) {
                 createDirRecursively(outputDir)

@@ -3,8 +3,6 @@ const cors = require('cors')
 const express = require('express')
 const fileUpload = require('express-fileupload')
 const combineRouters = require('./routers/index.js')
-const { connectToDB } = require('./services/sequelize.service.js')
-const combineMiddleWares = require('./middlewares/index.js')
 const { PORT } = require('./configs/server.config.js')
 
 const app = express()
@@ -18,8 +16,6 @@ app.use(fileUpload({
     useTempFiles: true,
 }))
 
-// connectToDB()
-// combineMiddleWares(app)
 combineRouters(app)
 
 app.use((err, req, res, next) => {
