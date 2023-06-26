@@ -20,7 +20,7 @@ class ImageController {
             if (!fs.existsSync(outputDir)) {
                 createDirRecursively(outputDir)
             }
-        
+ 
             if (image && tempFilePath) {
                 if (!['image/jpeg', 'image/jpg', 'image/png', 'image/svg', 'application/octet-stream'].includes(image?.mimetype)) {
                     if(fs.existsSync(tempFilePath)) fs.unlinkSync(tempFilePath)

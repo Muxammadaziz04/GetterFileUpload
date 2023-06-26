@@ -7,13 +7,13 @@ const { PORT } = require('./configs/server.config.js')
 
 const app = express()
 
-app.use(cors({origin: true}))
+app.use(cors({ origin: true }))
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.resolve(__dirname, '../../uploads')))
 app.use(fileUpload({
-    tempFileDir: "temp",
-    useTempFiles: true,
+	tempFileDir: "temp",
+	useTempFiles: true,
 }))
 
 combineRouters(app)
