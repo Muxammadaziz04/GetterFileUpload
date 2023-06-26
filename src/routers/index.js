@@ -1,11 +1,13 @@
 const imageRouter = require('./image.router.js')
 const videoRouter = require('./video.router.js')
 const removeRouter = require('./remove.router.js')
+const fileRouter = require('./file.router.js')
 
 const routers = [
     imageRouter,
     videoRouter,
-    removeRouter
+    removeRouter,
+    fileRouter
 ]
 
 const combineRouters = (app) => {
